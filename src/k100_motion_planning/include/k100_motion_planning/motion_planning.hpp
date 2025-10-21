@@ -2,25 +2,25 @@
 #define k100_MOTION_PLANNING__MOTION_PLANNING_HPP_
 
 #include <rclcpp/rclcpp.hpp>
-#include <moveit/move_group_interface/move_group_interface.hpp>
-#include <moveit/robot_model_loader/robot_model_loader.hpp>
-#include <moveit/planning_scene/planning_scene.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit/robot_model_loader/robot_model_loader.h>
+#include <moveit/planning_scene/planning_scene.h>
 #include <moveit_visual_tools/moveit_visual_tools.h>
-#include <moveit_msgs/msg/display_trajectory.hpp>
-#include <moveit/planning_scene_interface/planning_scene_interface.hpp>
-#include <moveit/planning_scene_monitor/planning_scene_monitor.hpp>
-#include <moveit/collision_detection/collision_common.hpp>
-#include <moveit/robot_state/conversions.hpp>
-#include <moveit_msgs/msg/display_trajectory.hpp>
-#include <moveit_msgs/msg/motion_plan_response.hpp>
-#include <moveit/robot_trajectory/robot_trajectory.hpp>
-#include <moveit/trajectory_processing/time_optimal_trajectory_generation.hpp>
-#include <geometry_msgs/msg/pose_stamped.hpp>
-#include <geometry_msgs/msg/quaternion_stamped.hpp>
+#include <moveit_msgs/msg/display_trajectory.h>
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
+#include <moveit/planning_scene_monitor/planning_scene_monitor.h>
+#include <moveit/collision_detection/collision_common.h>
+#include <moveit/robot_state/conversions.h>
+#include <moveit_msgs/msg/display_trajectory.h>
+#include <moveit_msgs/msg/motion_plan_response.h>
+#include <moveit/robot_trajectory/robot_trajectory.h>
+#include <moveit/trajectory_processing/time_optimal_trajectory_generation.h>
+#include <geometry_msgs/msg/pose_stamped.h>
+#include <geometry_msgs/msg/quaternion_stamped.h>
 #include <geometric_shapes/shape_operations.h>
-#include <geometry_msgs/msg/pose_stamped.hpp>
-#include <shape_msgs/msg/solid_primitive.hpp>
-#include <sensor_msgs/msg/joy.hpp>  // 兼容RViz面板发布为Joy的情况
+#include <geometry_msgs/msg/pose_stamped.h>
+#include <shape_msgs/msg/solid_primitive.h>
+#include <sensor_msgs/msg/joy.h>  // 兼容RViz面板发布为Joy的情况
 #include <sstream>
 #include <string>
 #include <vector>
