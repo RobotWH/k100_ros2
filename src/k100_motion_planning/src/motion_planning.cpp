@@ -135,24 +135,25 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planPoseGoa
     RCLCPP_ERROR(LOGGER, "规划失败");
     return plan; // 空plan
   }
-  if (plan.trajectory.joint_trajectory.points.empty())
+  if (plan.trajectory_.joint_trajectory.points.empty())  // 成员名更新
   {
     RCLCPP_ERROR(LOGGER, "规划轨迹为空");
     return plan; // 空plan
   }
 
+  // 可视化使用新版成员
   visual_tools_->deleteAllMarkers();
-  visual_tools_->publishTrajectoryLine(plan.trajectory, robot_model_->getLinkModel(ee_link), joint_model_group_);
+  visual_tools_->publishTrajectoryLine(plan.trajectory_, robot_model_->getLinkModel(ee_link), joint_model_group_);
   visual_tools_->trigger();
 
-  RCLCPP_WARN(LOGGER, "规划成功, 轨迹总点数: %zu", plan.trajectory.joint_trajectory.points.size());
+  RCLCPP_WARN(LOGGER, "规划成功, 轨迹总点数: %zu", plan.trajectory_.joint_trajectory.points.size());
   // // 发布 DisplayTrajectory
   // if (display_publisher_)
   // {
   //   moveit_msgs::msg::DisplayTrajectory msg;
   //   msg.model_id = robot_model_->getName();
   //   moveit::core::robotStateToRobotStateMsg(*move_group_.getCurrentState(), msg.trajectory_start);
-  //   msg.trajectory.push_back(plan.trajectory);
+  //   msg.trajectory.push_back(plan.trajectory_); // 若恢复发布时需改为 trajectory_
   //   display_publisher_->publish(msg);
   // }
   return plan;
@@ -198,14 +199,14 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
     move_group_.setJointValueTarget(way_points[i]);
     moveit::planning_interface::MoveGroupInterface::Plan partial;
     bool ok = (move_group_.plan(partial) == moveit::core::MoveItErrorCode::SUCCESS);
-    if (!ok || partial.trajectory.joint_trajectory.points.empty())
+    if (!ok || partial.trajectory_.joint_trajectory.points.empty())
     {
       RCLCPP_ERROR(LOGGER, "Joint multi-goal: 第 %zu 段规划失败", i);
       ok_all = false;
       return plan;
     }
-    RCLCPP_WARN(LOGGER, "Joint multi-goal: 段 %zu 规划成功, 轨迹总点数=%zu", i, partial.trajectory.joint_trajectory.points.size());
-    partial_trajs.push_back(partial.trajectory);
+    RCLCPP_WARN(LOGGER, "Joint multi-goal: 段 %zu 规划成功, 轨迹总点数=%zu", i, partial.trajectory_.joint_trajectory.points.size());
+    partial_trajs.push_back(partial.trajectory_);  // 更新成员名
     // 更新起始状态为该段终点
     state->setJointGroupPositions(jmg, way_points[i]);
     state->update();
@@ -224,7 +225,7 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
   }
 
   // 拼接轨迹
-  trajectory_processing::TimeOptimalTrajectoryGeneration time_param;
+  // trajectory_processing::TimeOptimalTrajectoryGeneration time_param;  // 移除未使用变量
   robot_trajectory::RobotTrajectory combined(state->getRobotModel(), planning_group_);
   robot_trajectory::RobotTrajectory tmp(state->getRobotModel(), planning_group_);
   combined.setRobotTrajectoryMsg(*state, partial_trajs[0]);
@@ -235,23 +236,21 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
     tmp.clear();
   }
 
-  // 时间参数化
+  // 时间参数化 (MoveGroupInterface 不再提供 getMaxVelocity/AccelerationScalingFactor, 使用默认1.0 或自行维护变量)
   trajectory_processing::TimeOptimalTrajectoryGeneration totg;
-  if (!totg.computeTimeStamps(combined, 
-                              move_group_.getMaxVelocityScalingFactor(), 
-                              move_group_.getMaxAccelerationScalingFactor()))
+  if (!totg.computeTimeStamps(combined, 1.0, 1.0))  // 原来传 getMaxVelocityScalingFactor()/getMaxAccelerationScalingFactor()
   {
     RCLCPP_ERROR(LOGGER, "Joint multi-goal: 时间参数化失败");
     return plan;
   }
-  // 输出到 plan
-  combined.getRobotTrajectoryMsg(plan.trajectory);
-  plan.start_state = moveit_msgs::msg::RobotState();
-  RCLCPP_WARN(LOGGER, "Joint multi-goal: 轨迹总段数=%zu, 合并后轨迹总点数=%zu", partial_trajs.size(), plan.trajectory.joint_trajectory.points.size());
+  // 输出到新版成员
+  combined.getRobotTrajectoryMsg(plan.trajectory_);
+  plan.start_state_ = moveit_msgs::msg::RobotState(); // 成员名更新
+  RCLCPP_WARN(LOGGER, "Joint multi-goal: 轨迹总段数=%zu, 合并后轨迹总点数=%zu", partial_trajs.size(), plan.trajectory_.joint_trajectory.points.size());
 
-  // 可视化 
+  // 可视化
   visual_tools_->deleteAllMarkers();  
-  visual_tools_->publishTrajectoryLine(plan.trajectory, robot_model_->getLinkModel(ee_link), joint_model_group_);
+  visual_tools_->publishTrajectoryLine(plan.trajectory_, robot_model_->getLinkModel(ee_link), joint_model_group_);
   visual_tools_->trigger();
 
   if (display_publisher_)
@@ -259,7 +258,7 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
     moveit_msgs::msg::DisplayTrajectory msg;
     msg.model_id = robot_model_->getName();
     moveit::core::robotStateToRobotStateMsg(*move_group_.getCurrentState(), msg.trajectory_start);
-    msg.trajectory.push_back(plan.trajectory);
+    msg.trajectory.push_back(plan.trajectory_); // 更新成员名
     display_publisher_->publish(msg);
   }
   return plan;
@@ -267,7 +266,7 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
 
 bool MotionPlanning::executePlan(const moveit::planning_interface::MoveGroupInterface::Plan& plan)
 {
-  if (plan.trajectory.joint_trajectory.points.empty())
+  if (plan.trajectory_.joint_trajectory.points.empty())  // 更新成员名
   {
     RCLCPP_ERROR(LOGGER, "执行失败: 轨迹为空");
     return false;
