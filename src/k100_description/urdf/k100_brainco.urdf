@@ -534,7 +534,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
       </geometry>
       <material
         name="">
@@ -548,7 +548,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -942,7 +942,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_right_wrist_yaw_link.STL" />
       </geometry>
       <material
         name="">
@@ -956,7 +956,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_ right_wrist_yaw_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1412,7 +1412,7 @@
 
 
   <joint name="L_base_link_joint" type="fixed">
-    <origin xyz="-0.0268 0.005 -0.051" rpy="3.14159 0 -1.5708"/>
+    <origin xyz="-0.0268 0.000 -0.081" rpy="3.14159 0 -1.5708"/>
     <parent link="left_wrist_yaw_link"/>
     <child link="left_base_link"/>
   </joint>
@@ -2413,7 +2413,7 @@
       ########################################right hand ########################################  -->
 
   <joint name="R_base_link_joint" type="fixed">
-    <origin xyz="-0.0268 -0.005 -0.051" rpy="3.14159 0 1.5708"/>
+    <origin xyz="-0.0268 0.000 -0.081" rpy="3.14159 0 1.5708"/>
     <parent link="right_wrist_yaw_link"/>
     <child link="right_base_link"/>
   </joint>
