@@ -215,10 +215,10 @@
     <child
       link="left_shoulder_pitch_link" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-3.0229102644541785"
-      upper="3.005456971934235"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -267,7 +267,7 @@
     type="revolute">
     <origin
       xyz="-0.052528 0 0.057497"
-      rpy="1.5708 0 0" />
+      rpy="-3.14159 0 0" />
     <parent
       link="left_shoulder_pitch_link" />
     <child
@@ -275,8 +275,8 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      lower="-3.4033920413889422"
-      upper="0.3490658503988659"
+      lower="-1.047"
+      upper="1.5708"
       effort="10"
       velocity="100" />
   </joint>
@@ -325,7 +325,7 @@
     type="revolute">
     <origin
       xyz="0.052528 0 -0.1236"
-      rpy="0 0 0" />
+      rpy="0 0 -1.5708" />
     <parent
       link="left_shoulder_roll_link" />
     <child
@@ -333,8 +333,8 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-1.5707963267948966"
-      upper="3.141592653589793"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -391,8 +391,8 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-1.5707963267948966"
-      upper="2.871066619530672"
+      lower="-0.260"
+      upper="2.355"
       effort="10"
       velocity="100" />
   </joint>
@@ -449,8 +449,8 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-2.9670597283903604"
-      upper="3.01941960595019"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -499,7 +499,7 @@
     type="revolute">
     <origin
       xyz="0.0017429 -0.03829 -0.152"
-      rpy="0 0 0" />
+      rpy="0 -1.5708 0" />
     <parent
       link="left_wrist_roll_link" />
     <child
@@ -507,8 +507,8 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-1.8151424220741028"
-      upper="1.8849555921538759"
+      lower="-2.966"
+      upper="-0.262"
       effort="10"
       velocity="100" />
   </joint>
@@ -565,8 +565,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-1.5707963267948966"
-      upper="1.605702911834783"
+      lower="-1.31"
+      upper="1.22"
       effort="10"
       velocity="100" />
   </joint>
@@ -621,10 +621,10 @@
     <child
       link="right_shoulder_pitch_link" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
-      lower="-3.0229102644541785"
-      upper="3.005456971934235"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -673,7 +673,7 @@
     type="revolute">
     <origin
       xyz="0 0 0.063497"
-      rpy="-1.5708 0 0" />
+      rpy="-3.14159 0 0" />
     <parent
       link="right_shoulder_pitch_link" />
     <child
@@ -681,12 +681,11 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-3.4033920413889422"
-      upper="0.29670597283903605"
+      lower="-1.047"
+      upper="1.5708"
       effort="10"
       velocity="100" />
   </joint>
-
   <link
     name="right_shoulder_yaw_link">
     <inertial>
@@ -732,16 +731,16 @@
     type="revolute">
     <origin
       xyz="0 0 -0.1236"
-      rpy="0 0 0" />
+      rpy="0 0 1.5708" />
     <parent
       link="right_shoulder_roll_link" />
     <child
       link="right_shoulder_yaw_link" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-1.5707963267948966"
-      upper="3.141592653589793"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -798,8 +797,8 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-1.5533430342749535"
-      upper="2.897246558310587"
+      lower="-0.260"
+      upper="2.355"
       effort="10"
       velocity="100" />
   </joint>
@@ -855,10 +854,10 @@
     <child
       link="right_wrist_roll_link" />
    <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
     <limit
-      lower="-1.8325957145940461"
-      upper="1.8325957145940461"
+      lower="-2.966"
+      upper="2.966"
       effort="10"
       velocity="100" />
   </joint>
@@ -907,7 +906,7 @@
     type="revolute">
     <origin
       xyz="0.0017429 -0.03829 -0.152"
-      rpy="0 0 0" />
+      rpy="0 -1.5708 0" />
     <parent
       link="right_wrist_roll_link" />
     <child
@@ -915,8 +914,8 @@
      <axis
       xyz="0 -1 0" />
     <limit
-      lower="-1.8325957145940461"
-      upper="1.8325957145940461"
+      lower="-2.966"
+      upper="-0.262"
       effort="10"
       velocity="100" />
   </joint>
@@ -971,10 +970,10 @@
     <child
       link="right_wrist_yaw_link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-1.5882496193148399"
-      upper="1.5882496193148399"
+      lower="-1.31"
+      upper="1.22"
       effort="10"
       velocity="100" />
   </joint>
