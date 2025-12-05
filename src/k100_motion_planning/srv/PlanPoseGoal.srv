@@ -1,0 +1,6 @@
+string group_name
+geometry_msgs/PoseStamped pose
+string ee_link
+---
+bool success
+string message

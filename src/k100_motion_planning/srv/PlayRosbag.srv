@@ -1,0 +1,6 @@
+string group_name
+string file_path
+bool enable_time_parameterization  # 是否开启时间参数优化
+---
+bool success
+string message

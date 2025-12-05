@@ -3,7 +3,9 @@ Panels:
     Help Height: 70
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 622
   - Class: rviz_common/Help
@@ -82,12 +84,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          left_base_link:
+          left_arm_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          left_arm_ee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          left_elbow_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          left_elbow_link:
+          left_hand_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -242,12 +252,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          right_base_link:
+          right_arm_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          right_arm_ee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          right_elbow_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          right_elbow_link:
+          right_hand_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -427,12 +445,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          left_base_link:
+          left_arm_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          left_arm_ee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          left_elbow_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          left_elbow_link:
+          left_hand_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -587,12 +613,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          right_base_link:
+          right_arm_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          right_arm_ee_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          right_elbow_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          right_elbow_link:
+          right_hand_base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -739,9 +773,13 @@ Visualization Manager:
           Value: false
         head_yaw_link:
           Value: false
-        left_base_link:
+        left_arm_base_link:
+          Value: false
+        left_arm_ee_link:
           Value: true
         left_elbow_link:
+          Value: false
+        left_hand_base_link:
           Value: false
         left_index_distal_Link:
           Value: false
@@ -803,9 +841,13 @@ Visualization Manager:
           Value: false
         o_wheel5_Link:
           Value: false
-        right_base_link:
+        right_arm_base_link:
+          Value: false
+        right_arm_ee_link:
           Value: true
         right_elbow_link:
+          Value: false
+        right_hand_base_link:
           Value: false
         right_index_distal_link:
           Value: false
@@ -855,7 +897,7 @@ Visualization Manager:
           Value: false
       Marker Scale: 1
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
@@ -864,35 +906,38 @@ Visualization Manager:
             head_yaw_link:
               head_pitch_link:
                 {}
-            left_shoulder_pitch_link:
-              left_shoulder_roll_link:
-                left_shoulder_yaw_link:
-                  left_elbow_link:
-                    left_wrist_roll_link:
-                      left_wrist_pitch_link:
-                        left_wrist_yaw_link:
-                          left_base_link:
-                            left_index_proximal_Link:
-                              left_index_distal_Link:
-                                left_index_tip_Link:
-                                  {}
-                            left_middle_proximal_Link:
-                              left_middle_distal_Link:
-                                left_middle_tip_Link:
-                                  {}
-                            left_pinky_proximal_Link:
-                              left_pinky_distal_Link:
-                                left_pinky_tip_Link:
-                                  {}
-                            left_ring_proximal_Link:
-                              left_ring_distal_Link:
-                                left_ring_tip_Link:
-                                  {}
-                            left_thumb_metacarpal_Link:
-                              left_thumb_proximal_Link:
-                                left_thumb_distal_Link:
-                                  left_thumb_tip_Link:
+            left_arm_base_link:
+              left_shoulder_pitch_link:
+                left_shoulder_roll_link:
+                  left_shoulder_yaw_link:
+                    left_elbow_link:
+                      left_wrist_roll_link:
+                        left_wrist_pitch_link:
+                          left_wrist_yaw_link:
+                            left_arm_ee_link:
+                              {}
+                            left_hand_base_link:
+                              left_index_proximal_Link:
+                                left_index_distal_Link:
+                                  left_index_tip_Link:
                                     {}
+                              left_middle_proximal_Link:
+                                left_middle_distal_Link:
+                                  left_middle_tip_Link:
+                                    {}
+                              left_pinky_proximal_Link:
+                                left_pinky_distal_Link:
+                                  left_pinky_tip_Link:
+                                    {}
+                              left_ring_proximal_Link:
+                                left_ring_distal_Link:
+                                  left_ring_tip_Link:
+                                    {}
+                              left_thumb_metacarpal_Link:
+                                left_thumb_proximal_Link:
+                                  left_thumb_distal_Link:
+                                    left_thumb_tip_Link:
+                                      {}
             o_wheel1_Link:
               {}
             o_wheel2_Link:
@@ -906,35 +951,38 @@ Visualization Manager:
             o_wheel5_Link:
               o_wheel5_1_Link:
                 {}
-            right_shoulder_pitch_link:
-              right_shoulder_roll_link:
-                right_shoulder_yaw_link:
-                  right_elbow_link:
-                    right_wrist_roll_link:
-                      right_wrist_pitch_link:
-                        right_wrist_yaw_link:
-                          right_base_link:
-                            right_index_proximal_link:
-                              right_index_distal_link:
-                                right_index_tip:
-                                  {}
-                            right_middle_proximal_link:
-                              right_middle_distal_link:
-                                right_middle_tip:
-                                  {}
-                            right_pinky_proximal_link:
-                              right_pinky_distal_link:
-                                right_pinky_tip:
-                                  {}
-                            right_ring_proximal_link:
-                              right_ring_distal_link:
-                                right_ring_tip:
-                                  {}
-                            right_thumb_metacarpal_link:
-                              right_thumb_proximal_link:
-                                right_thumb_distal_link:
-                                  right_thumb_tip:
+            right_arm_base_link:
+              right_shoulder_pitch_link:
+                right_shoulder_roll_link:
+                  right_shoulder_yaw_link:
+                    right_elbow_link:
+                      right_wrist_roll_link:
+                        right_wrist_pitch_link:
+                          right_wrist_yaw_link:
+                            right_arm_ee_link:
+                              {}
+                            right_hand_base_link:
+                              right_index_proximal_link:
+                                right_index_distal_link:
+                                  right_index_tip:
                                     {}
+                              right_middle_proximal_link:
+                                right_middle_distal_link:
+                                  right_middle_tip:
+                                    {}
+                              right_pinky_proximal_link:
+                                right_pinky_distal_link:
+                                  right_pinky_tip:
+                                    {}
+                              right_ring_proximal_link:
+                                right_ring_distal_link:
+                                  right_ring_tip:
+                                    {}
+                              right_thumb_metacarpal_link:
+                                right_thumb_proximal_link:
+                                  right_thumb_distal_link:
+                                    right_thumb_tip:
+                                      {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -955,7 +1003,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.951926231384277
+      Distance: 3.8347716331481934
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -970,10 +1018,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.350000262260437
+      Pitch: 0.5650001168251038
       Target Frame: world
       Value: Orbit (rviz_default_plugins)
-      Yaw: 0.07699298113584518
+      Yaw: 6.020177841186523
     Saved: ~
 Window Geometry:
   Displays:
@@ -993,5 +1041,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1850
-  X: 70
-  Y: 27
+  X: 235
+  Y: 82

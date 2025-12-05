@@ -9,14 +9,14 @@ default_acceleration_scaling_factor: 0.1
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
   head_pitch_joint:
-    has_velocity_limits: true
+    has_velocity_limits: false
     max_velocity: 1.5
-    has_acceleration_limits: true
+    has_acceleration_limits: false
     max_acceleration: 3.0
   head_yaw_joint:
-    has_velocity_limits: true
+    has_velocity_limits: false
     max_velocity: 1.5
-    has_acceleration_limits: true
+    has_acceleration_limits: false
     max_acceleration: 3.0
   left_shoulder_pitch_joint:
     has_velocity_limits: true
@@ -63,22 +63,12 @@ joint_limits:
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
-  left_index_tip_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
   left_middle_distal_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
   left_middle_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  left_middle_tip_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
@@ -93,22 +83,12 @@ joint_limits:
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
-  left_pinky_tip_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
   left_ring_distal_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
   left_ring_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  left_ring_tip_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
@@ -124,11 +104,6 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 4.0
   left_thumb_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  left_thumb_tip_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
@@ -178,22 +153,12 @@ joint_limits:
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
-  right_index_tip_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
   right_middle_distal_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
   right_middle_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  right_middle_tip_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
@@ -208,22 +173,12 @@ joint_limits:
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
-  right_pinky_tip_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
   right_ring_distal_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 4.0
   right_ring_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  right_ring_tip_joint:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
@@ -239,11 +194,6 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 4.0
   right_thumb_proximal_joint:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 4.0
-  right_thumb_tip:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true

@@ -15,11 +15,15 @@ controller_manager:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
+    left_hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
     right_hand_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
-    left_hand_controller:
+    both_arms_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
@@ -66,39 +70,51 @@ head_controller:
     state_interfaces:
       - position
       - velocity
-right_hand_controller:
+left_hand_controller:
   ros__parameters:
     joints:
-      - right_index_proximal_joint
-      - right_index_tip_joint
-      - right_middle_proximal_joint
-      - right_middle_tip_joint
-      - right_pinky_proximal_joint
-      - right_pinky_tip_joint
-      - right_ring_proximal_joint
-      - right_ring_tip_joint
-      - right_thumb_metacarpal_joint
-      - right_thumb_proximal_joint
-      - right_thumb_tip
+      - left_index_proximal_joint
+      - left_middle_proximal_joint
+      - left_pinky_proximal_joint
+      - left_ring_proximal_joint
+      - left_thumb_metacarpal_joint
+      - left_thumb_proximal_joint
     command_interfaces:
       - position
     state_interfaces:
       - position
       - velocity
-left_hand_controller:
+right_hand_controller:
   ros__parameters:
     joints:
-      - left_index_proximal_joint
-      - left_index_tip_joint
-      - left_middle_proximal_joint
-      - left_middle_tip_joint
-      - left_pinky_proximal_joint
-      - left_pinky_tip_joint
-      - left_ring_proximal_joint
-      - left_ring_tip_joint
-      - left_thumb_metacarpal_joint
-      - left_thumb_proximal_joint
-      - left_thumb_tip_joint
+      - right_index_proximal_joint
+      - right_middle_proximal_joint
+      - right_pinky_proximal_joint
+      - right_ring_proximal_joint
+      - right_thumb_metacarpal_joint
+      - right_thumb_proximal_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+both_arms_controller:
+  ros__parameters:
+    joints:
+      - left_shoulder_pitch_joint
+      - left_shoulder_roll_joint
+      - left_shoulder_yaw_joint
+      - left_elbow_joint
+      - left_wrist_roll_joint
+      - left_wrist_pitch_joint
+      - left_wrist_yaw_joint
+      - right_shoulder_pitch_joint
+      - right_shoulder_roll_joint
+      - right_shoulder_yaw_joint
+      - right_elbow_joint
+      - right_wrist_roll_joint
+      - right_wrist_pitch_joint
+      - right_wrist_yaw_joint
     command_interfaces:
       - position
     state_interfaces:

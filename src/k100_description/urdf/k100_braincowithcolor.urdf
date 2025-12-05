@@ -32,7 +32,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/base_link.STL" />
+          filename="package://k100_description/meshes/k100/base_link.dae" />
       </geometry>
       <material
         name="">
@@ -46,7 +46,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/base_link.STL" />
+          filename="package://k100_description/meshes/k100/base_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -72,7 +72,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/head_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/head_yaw_link.dae" />
       </geometry>
       <material
         name="">
@@ -86,7 +86,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/head_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/head_yaw_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -128,7 +128,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/head_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/head_pitch_link.dae" />
       </geometry>
       <material
         name="">
@@ -142,7 +142,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/head_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/head_pitch_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -164,66 +164,6 @@
       effort="0"
       velocity="0" />
   </joint>
-
-  <link
-    name="left_arm_base_link">
-    <inertial>
-      <origin
-        xyz="0.0 0.0 0.0"
-        rpy="0 0 0" />
-      <mass
-        value="0.00" />
-      <inertia
-        ixx="3.4609E-05"
-        ixy="2.6745E-08"
-        ixz="-6.4702E-09"
-        iyy="4.7862E-05"
-        iyz="-3.7781E-07"
-        izz="2.2147E-05" />
-    </inertial>
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.STL" />
-      </geometry>
-    </collision> -->
-  </link>
-  <joint
-    name="left_arm_base_joint"
-    type="fixed">
-    <origin
-      xyz="-0.29331 0.13974 1.1789"
-      rpy="0 1.5707963 1.5707963"/>
-    <parent
-      link="base_link" />
-    <child
-      link="left_arm_base_link" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="10.0"
-      velocity="100.0" />
-  </joint>
-
   <link
     name="left_shoulder_pitch_link">
     <inertial>
@@ -246,7 +186,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.dae" />
       </geometry>
       <material
         name="">
@@ -260,7 +200,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_pitch_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -268,10 +208,10 @@
     name="left_shoulder_pitch_joint"
     type="revolute">
     <origin
-      xyz="0.0 0.0 0.0121"
-      rpy="0 0 -1.5708" />
+      xyz="-0.29331 0.15637 1.1789"
+      rpy="-1.5708 0 0" />
     <parent
-      link="left_arm_base_link" />
+      link="base_link" />
     <child
       link="left_shoulder_pitch_link" />
     <axis
@@ -279,8 +219,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_shoulder_roll_link">
@@ -304,7 +244,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_roll_link.dae" />
       </geometry>
       <material
         name="">
@@ -318,7 +258,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_roll_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -337,8 +277,8 @@
     <limit
       lower="-1.047"
       upper="1.5708"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_shoulder_yaw_link">
@@ -362,7 +302,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_yaw_link.dae" />
       </geometry>
       <material
         name="">
@@ -376,7 +316,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_shoulder_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/left_shoulder_yaw_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -395,8 +335,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_elbow_link">
@@ -420,7 +360,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_elbow_link.STL" />
+          filename="package://k100_description/meshes/k100/left_elbow_link.dae" />
       </geometry>
       <material
         name="">
@@ -434,7 +374,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_elbow_link.STL" />
+          filename="package://k100_description/meshes/k100/left_elbow_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -453,8 +393,8 @@
     <limit
       lower="-0.260"
       upper="2.355"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_wrist_roll_link">
@@ -478,7 +418,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/left_wrist_roll_link.dae" />
       </geometry>
       <material
         name="">
@@ -492,7 +432,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/left_wrist_roll_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -511,8 +451,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_wrist_pitch_link">
@@ -536,7 +476,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/left_wrist_pitch_link.dae" />
       </geometry>
       <material
         name="">
@@ -550,7 +490,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/left_wrist_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/left_wrist_pitch_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -569,8 +509,8 @@
     <limit
       lower="-2.966"
       upper="-0.262"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="left_wrist_yaw_link">
@@ -594,7 +534,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.dae" />
       </geometry>
       <material
         name="">
@@ -608,7 +548,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -627,112 +567,8 @@
     <limit
       lower="-1.31"
       upper="1.22"
-      effort="10.0"
-      velocity="100.0" />
-  </joint>
-  <link
-    name="left_arm_ee_link">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0" />
-      <inertia
-        ixx="6.5671E-05"
-        ixy="-4.9995E-08"
-        ixz="9.659E-09"
-        iyy="5.3338E-05"
-        iyz="5.4196E-06"
-        izz="6.5262E-05" />
-    </inertial>
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual> -->
-    <!-- <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
-      </geometry>
-    </collision> -->
-  </link>
-  <joint name="left_arm_ee_joint" type="fixed">
-    <origin xyz="-0.0268 0.000 -0.041" rpy="3.14159 0.0 0.0"/>
-    <parent link="left_wrist_yaw_link"/>
-    <child link="left_arm_ee_link"/>
-  </joint>
-
-  <link
-    name="right_arm_base_link">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.0" />
-      <inertia
-        ixx="3.4609E-05"
-        ixy="2.6745E-08"
-        ixz="6.4702E-09"
-        iyy="4.7862E-05"
-        iyz="3.7781E-07"
-        izz="2.2147E-05" />
-    </inertial>
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.STL" />
-      </geometry>
-    </collision> -->
-  </link>
-  <joint
-    name="right_arm_base_joint"
-    type="fixed">
-    <origin
-      xyz="-0.29331 -0.13974 1.1789"
-      rpy="0.0 1.5707963 -1.5707963" />
-    <parent
-      link="base_link" />
-    <child
-      link="right_arm_base_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-2.966"
-      upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_shoulder_pitch_link">
@@ -756,7 +592,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.dae" />
       </geometry>
       <material
         name="">
@@ -770,7 +606,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_pitch_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -778,10 +614,10 @@
     name="right_shoulder_pitch_joint"
     type="revolute">
     <origin
-      xyz="0.0 0.0 0.0121"
-      rpy="0 0 1.5708" />
+      xyz="-0.29331 -0.15184 1.1789"
+      rpy="1.5708 0 0" />
     <parent
-      link="right_arm_base_link" />
+      link="base_link" />
     <child
       link="right_shoulder_pitch_link" />
     <axis
@@ -789,8 +625,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_shoulder_roll_link">
@@ -814,7 +650,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_roll_link.dae" />
       </geometry>
       <material
         name="">
@@ -828,7 +664,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_roll_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -847,8 +683,8 @@
     <limit
       lower="-1.047"
       upper="1.5708"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_shoulder_yaw_link">
@@ -872,7 +708,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_yaw_link.dae" />
       </geometry>
       <material
         name="">
@@ -886,7 +722,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_shoulder_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/right_shoulder_yaw_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -905,8 +741,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_elbow_link">
@@ -930,7 +766,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_elbow_link.STL" />
+          filename="package://k100_description/meshes/k100/right_elbow_link.dae" />
       </geometry>
       <material
         name="">
@@ -944,7 +780,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_elbow_link.STL" />
+          filename="package://k100_description/meshes/k100/right_elbow_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -963,8 +799,8 @@
     <limit
       lower="-0.260"
       upper="2.355"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_wrist_roll_link">
@@ -988,7 +824,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_wrist_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/right_wrist_roll_link.dae" />
       </geometry>
       <material
         name="">
@@ -1002,7 +838,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/right_wrist_roll_link.STL" />
+          filename="package://k100_description/meshes/k100/right_wrist_roll_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -1022,8 +858,8 @@
     <limit
       lower="-2.966"
       upper="2.966"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_wrist_pitch_link">
@@ -1080,8 +916,8 @@
     <limit
       lower="-2.966"
       upper="-0.262"
-      effort="10.0"
-      velocity="100.0" />
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="right_wrist_yaw_link">
@@ -1105,7 +941,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/brainco_right_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_right_wrist_yaw_link.dae" />
       </geometry>
       <material
         name="">
@@ -1119,7 +955,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/k100/brainco_right_wrist_yaw_link.STL" />
+          filename="package://k100_description/meshes/k100/brainco_right_wrist_yaw_link.dae" />
       </geometry>
     </collision>
   </link>
@@ -1138,53 +974,8 @@
     <limit
       lower="-1.31"
       upper="1.22"
-      effort="10.0"
-      velocity="100.0" />
-  </joint>
-  <link
-    name="right_arm_ee_link">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0" />
-      <inertia
-        ixx="6.5671E-05"
-        ixy="-4.9995E-08"
-        ixz="9.659E-09"
-        iyy="5.3338E-05"
-        iyz="5.4196E-06"
-        izz="6.5262E-05" />
-    </inertial>
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual> -->
-    <!-- <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://k100_description/meshes/k100/brainco_left_wrist_yaw_link.STL" />
-      </geometry>
-    </collision> -->
-  </link>
-  <joint name="right_arm_ee_joint" type="fixed">
-    <origin xyz="-0.0268 0.000 -0.041" rpy="3.14159 0.0 0.0"/>
-    <parent link="right_wrist_yaw_link"/>
-    <child link="right_arm_ee_link"/>
+      effort="10"
+      velocity="100" />
   </joint>
   <link
     name="o_wheel1_Link">
@@ -1619,13 +1410,13 @@
        ########################################left hand ########################################  -->
 
 
-  <joint name="left_hand_base_link_joint" type="fixed">
+  <joint name="L_base_link_joint" type="fixed">
     <origin xyz="-0.0268 0.000 -0.081" rpy="3.14159 0 -1.5708"/>
     <parent link="left_wrist_yaw_link"/>
-    <child link="left_hand_base_link"/>
+    <child link="left_base_link"/>
   </joint>
   <link
-      name="left_hand_base_link">
+      name="left_base_link">
       <inertial>
         <origin
           xyz="-0.00478670623240344 0.00141981128680179 0.0505239077176535"
@@ -1646,7 +1437,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://k100_description/meshes/meshes_brainco/left_hand_base_link.STL" />
+            filename="package://k100_description/meshes/meshes_brainco/left_base_link.STL" />
         </geometry>
         <material
           name="">
@@ -1660,7 +1451,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://k100_description/meshes/meshes_brainco/left_hand_base_link.STL" />
+            filename="package://k100_description/meshes/meshes_brainco/left_base_link.STL" />
         </geometry>
       </collision>
     </link>
@@ -1711,7 +1502,7 @@
         xyz="0.0045 -0.019 0.027825"
         rpy="0 0 0.16787" />
       <parent
-        link="left_hand_base_link" />
+        link="left_base_link" />
       <child
         link="left_thumb_metacarpal_Link" />
       <axis
@@ -1884,7 +1675,7 @@
     </link>
     <joint
       name="left_thumb_tip_joint"
-      type="fixed">
+      type="revolute">
       <origin
         xyz="0 0.026528781163583 -0.00177344281307927"
         rpy="0.0667504507189052 0 3.14159265358979" />
@@ -1947,7 +1738,7 @@
         xyz="-0.0021349 -0.029578 0.080876"
         rpy="0.11819 0.14743 0.17422" />
       <parent
-        link="left_hand_base_link" />
+        link="left_base_link" />
       <child
         link="left_index_proximal_Link" />
       <axis
@@ -2062,7 +1853,7 @@
     </link>
     <joint
       name="left_index_tip_joint"
-      type="fixed">
+      type="revolute">
       <origin
         xyz="0.011097 0 0.035739"
         rpy="0 0.48723 0" />
@@ -2125,7 +1916,7 @@
         xyz="-0.0045935 -0.010061 0.084993"
         rpy="0.039468 0.1483 0.057975" />
       <parent
-        link="left_hand_base_link" />
+        link="left_base_link" />
       <child
         link="left_middle_proximal_Link" />
       <axis
@@ -2240,7 +2031,7 @@
     </link>
     <joint
       name="left_middle_tip_joint"
-      type="fixed">
+      type="revolute">
       <origin
         xyz="0.0073534 0 0.041703"
         rpy="0 0.34907 0" />
@@ -2303,7 +2094,7 @@
         xyz="-0.00468767815858587 0.0100262714211602 0.0839819548795939"
         rpy="-0.0394618478609065 0.147209177132223 -0.0579317909005277" />
       <parent
-        link="left_hand_base_link" />
+        link="left_base_link" />
       <child
         link="left_ring_proximal_Link" />
       <axis
@@ -2418,7 +2209,7 @@
     </link>
     <joint
       name="left_ring_tip_joint"
-      type="fixed">
+      type="revolute">
       <origin
         xyz="0.0071824 0 0.040734"
         rpy="0 0.34907 0" />
@@ -2481,7 +2272,7 @@
         xyz="-0.0023733 0.029356 0.078694"
         rpy="-0.11815 0.14491 -0.17392" />
       <parent
-        link="left_hand_base_link" />
+        link="left_base_link" />
       <child
         link="left_pinky_proximal_Link" />
       <axis
@@ -2596,7 +2387,7 @@
     </link>
     <joint
       name="left_pinky_tip_joint"
-      type="fixed">
+      type="revolute">
       <origin
         xyz="0.010221 0 0.032918"
         rpy="0 0.4756 0" />
@@ -2620,13 +2411,13 @@
       ########################################right hand ########################################
       ########################################right hand ########################################  -->
 
-  <joint name="right_hand_base_link_joint" type="fixed">
+  <joint name="R_base_link_joint" type="fixed">
     <origin xyz="-0.0268 0.000 -0.081" rpy="3.14159 0 1.5708"/>
     <parent link="right_wrist_yaw_link"/>
-    <child link="right_hand_base_link"/>
+    <child link="right_base_link"/>
   </joint>
   <link
-    name="right_hand_base_link">
+    name="right_base_link">
     <inertial>
       <origin
         xyz="-0.00477210157415217 -0.0014368255627066 0.0505186815078315"
@@ -2647,7 +2438,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/meshes_brainco/right_hand_base_link.STL" />
+          filename="package://k100_description/meshes/meshes_brainco/right_base_link.STL" />
       </geometry>
       <material
         name="">
@@ -2661,7 +2452,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://k100_description/meshes/meshes_brainco/right_hand_base_link.STL" />
+          filename="package://k100_description/meshes/meshes_brainco/right_base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -2712,7 +2503,7 @@
       xyz="0.005619 0.019867 0.027825"
       rpy="3.1416 0 2.9637" />
     <parent
-      link="right_hand_base_link" />
+      link="right_base_link" />
     <child
       link="right_thumb_metacarpal_link" />
     <axis
@@ -2884,8 +2675,8 @@
     </collision>
   </link>
   <joint
-    name="right_thumb_tip_joint"
-    type="fixed">
+    name="right_thumb_tip"
+    type="revolute">
     <origin
       xyz="0 0.026529 -0.0017734"
       rpy="-0.06675 0 0" />
@@ -2948,7 +2739,7 @@
       xyz="-0.0021181 0.029568 0.080876"
       rpy="-0.11819 0.14743 -0.17422" />
     <parent
-      link="right_hand_base_link" />
+      link="right_base_link" />
     <child
       link="right_index_proximal_link" />
     <axis
@@ -3063,7 +2854,7 @@
   </link>
   <joint
     name="right_index_tip_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.011097 0 0.035739"
       rpy="0 0.4756 0" />
@@ -3126,7 +2917,7 @@
       xyz="-0.0045767 0.010051 0.084993"
       rpy="-0.039468 0.1483 -0.057975" />
     <parent
-      link="right_hand_base_link" />
+      link="right_base_link" />
     <child
       link="right_middle_proximal_link" />
     <axis
@@ -3241,7 +3032,7 @@
   </link>
   <joint
     name="right_middle_tip_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.012558 0 0.040442"
       rpy="0 0.4756 0" />
@@ -3304,7 +3095,7 @@
       xyz="-0.0046709 -0.010037 0.083982"
       rpy="0.039462 0.14721 0.057932" />
     <parent
-      link="right_hand_base_link" />
+      link="right_base_link" />
     <child
       link="right_ring_proximal_link" />
     <axis
@@ -3419,7 +3210,7 @@
   </link>
   <joint
     name="right_ring_tip_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.012266 0 0.039501"
       rpy="0 0.4756 0" />
@@ -3482,7 +3273,7 @@
       xyz="-0.0023566 -0.029366 0.078694"
       rpy="0.11815 0.14491 0.17392" />
     <parent
-      link="right_hand_base_link" />
+      link="right_base_link" />
     <child
       link="right_pinky_proximal_link" />
     <axis
@@ -3597,7 +3388,7 @@
   </link>
   <joint
     name="right_pinky_tip_joint"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.010221 0 0.032918"
       rpy="0 0.4756 0" />

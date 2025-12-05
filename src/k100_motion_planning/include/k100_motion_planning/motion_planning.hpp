@@ -11,20 +11,22 @@
 #include <moveit/planning_scene_monitor/planning_scene_monitor.h>
 #include <moveit/collision_detection/collision_common.h>
 #include <moveit/robot_state/conversions.h>
-#include <moveit_msgs/msg/display_trajectory.h>
 #include <moveit_msgs/msg/motion_plan_response.h>
 #include <moveit/robot_trajectory/robot_trajectory.h>
 #include <moveit/trajectory_processing/time_optimal_trajectory_generation.h>
 #include <geometry_msgs/msg/pose_stamped.h>
 #include <geometry_msgs/msg/quaternion_stamped.h>
 #include <geometric_shapes/shape_operations.h>
-#include <geometry_msgs/msg/pose_stamped.h>
 #include <shape_msgs/msg/solid_primitive.h>
-#include <sensor_msgs/msg/joy.h>  // 兼容RViz面板发布为Joy的情况
+#include <sensor_msgs/msg/joy.h>          // 兼容RViz面板发布为Joy的情况
+#include <sensor_msgs/msg/joint_state.h>  // 自行缓存joint_states，绕开MoveIt的CurrentStateMonitor
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <memory>
+#include <mutex>
 
 namespace k100_motion_planning {
 
@@ -73,6 +75,7 @@ public:
    *  @return MoveGroupInterface 指针
    */
   moveit::planning_interface::MoveGroupInterface* moveGroup();
+  const std::string& referenceFrame() const { return reference_frame_; }
   
   /*!\brief 逆运动学求解 (返回首个可行关节解)
    *  @param pose 末端目标位姿
@@ -100,6 +103,16 @@ public:
    */
   geometry_msgs::msg::PoseStamped getLinkPoseDirect(const std::string& link_name,
                                                     double timeout = 1.0) const;
+
+  /** \brief 获取指定 link 在目标坐标系下的位姿（使用TF变换）
+   *  @param link_name 链接名称
+   *  @param target_frame 目标坐标系名称
+   *  @param timeout 获取当前状态和TF变换超时时间
+   *  @return PoseStamped (失败时 header.frame_id 为空字符串)
+   */
+  geometry_msgs::msg::PoseStamped getLinkPoseInFrame(const std::string& link_name,
+                                                      const std::string& target_frame,
+                                                      double timeout = 2.0) const;
 
   /** \brief 载入 STL/OBJ 网格并作为障碍物加入场景
    *  @param object_id 唯一ID
@@ -157,6 +170,7 @@ public:
   bool allowCollisionBetween(const std::string& object_a, const std::string& object_b, bool allow = true);
 
 private:
+  bool waitForJointStateCache(double timeout_sec = 2.0) const;
   rclcpp::Node::SharedPtr node_;
   std::string planning_group_;
   robot_model_loader::RobotModelLoader robot_model_loader_;
@@ -171,6 +185,23 @@ private:
   rclcpp::Publisher<moveit_msgs::msg::DisplayTrajectory>::SharedPtr display_publisher_;
   std::unique_ptr<moveit_visual_tools::MoveItVisualTools> visual_tools_;
   planning_scene_monitor::PlanningSceneMonitorPtr planning_scene_monitor_; // 场景监视器(用户请求命名)
+  std::string reference_frame_;
+  
+  // Action客户端用于通过桥接节点执行轨迹
+  rclcpp_action::Client<control_msgs::action::FollowJointTrajectory>::SharedPtr arm_action_client_;
+
+  // ========== 关节状态缓存，绕开MoveIt内部的CurrentStateMonitor ==========
+  rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_state_sub_;
+  mutable std::mutex joint_state_mutex_;
+  std::vector<std::string> cached_joint_names_;
+  std::vector<double>      cached_joint_positions_;
+
+  /** \brief 使用缓存的 joint_states 填充一个 RobotState
+   *
+   *  - 若缓存为空则返回 false
+   *  - 仅按 joint_name 设置单自由度关节，对未知变量名静默忽略
+   */
+  bool fillRobotStateFromJointState(moveit::core::RobotState& state) const;
 };
 
 } // namespace k100_motion_planning

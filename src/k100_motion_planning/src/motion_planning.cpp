@@ -67,7 +67,11 @@ bool MotionPlanning::initialize()
 
 
   // Joy 按钮方式 STOP (默认使用第4号索引按钮, 参数可调)
-  stop_button_index_ = node_->declare_parameter<int>("stop_button_index", 4); // 使用成员变量, 与示例中 buttons[4]==1 对应
+  try {
+      stop_button_index_ = node_->declare_parameter<int>("stop_button_index", 4);
+  } catch (const rclcpp::exceptions::ParameterAlreadyDeclaredException&) {
+      node_->get_parameter("stop_button_index", stop_button_index_);
+  }
   joy_sub_ = node_->create_subscription<sensor_msgs::msg::Joy>(
       "rviz_visual_tools_gui", 10,
       [this](const sensor_msgs::msg::Joy::SharedPtr msg)
@@ -123,9 +127,17 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planPoseGoa
   {
     std::vector<std::string> link_names = move_group_.getLinkNames();
     ee_link = link_names.back();
+    RCLCPP_WARN(LOGGER, "以末端连杆: %s为目标进行规划", ee_link.c_str());
+    
   }
   moveit::planning_interface::MoveGroupInterface::Plan plan;
-  move_group_.setStartStateToCurrentState();
+  auto state = move_group_.getCurrentState(5);
+  if (!state)
+  {
+    RCLCPP_ERROR(LOGGER, "planPoseGoal: 获取当前状态失败");
+    return plan;
+  }
+  move_group_.setStartState(*state);
   move_group_.setPoseTarget(pose, ee_link);
   move_group_.setPlanningTime(3.0);
   move_group_.setNumPlanningAttempts(3);
@@ -225,7 +237,6 @@ moveit::planning_interface::MoveGroupInterface::Plan MotionPlanning::planJointGo
   }
 
   // 拼接轨迹
-  // trajectory_processing::TimeOptimalTrajectoryGeneration time_param;  // 移除未使用变量
   robot_trajectory::RobotTrajectory combined(state->getRobotModel(), planning_group_);
   robot_trajectory::RobotTrajectory tmp(state->getRobotModel(), planning_group_);
   combined.setRobotTrajectoryMsg(*state, partial_trajs[0]);
@@ -286,9 +297,11 @@ std::vector<double> MotionPlanning::computeIKArray(const geometry_msgs::msg::Pos
                                      double timeout,
                                      unsigned int attempts)
 {
+  planning_scene_monitor_->requestPlanningSceneState();
   if (ee_link.empty())
   {
     ee_link = move_group_.getEndEffectorLink();
+    RCLCPP_WARN(LOGGER, "以末端连杆: %s为目标进行逆解", ee_link.c_str());
     if (ee_link.empty())
     {
       const auto links = move_group_.getLinkNames();

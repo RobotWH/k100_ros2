@@ -1,0 +1,7 @@
+{
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "files.associations": {
+        "condition_variable": "cpp",
+        "functional": "cpp"
+    }
+}

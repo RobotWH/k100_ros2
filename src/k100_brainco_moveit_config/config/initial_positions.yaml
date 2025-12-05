@@ -5,37 +5,27 @@ initial_positions:
   head_yaw_joint: 0
   left_elbow_joint: 0
   left_index_proximal_joint: 0
-  left_index_tip_joint: 0
   left_middle_proximal_joint: 0
-  left_middle_tip_joint: 0
   left_pinky_proximal_joint: 0
-  left_pinky_tip_joint: 0
   left_ring_proximal_joint: 0
-  left_ring_tip_joint: 0
   left_shoulder_pitch_joint: 0
   left_shoulder_roll_joint: 1.571
   left_shoulder_yaw_joint: -1.571
   left_thumb_metacarpal_joint: 0
   left_thumb_proximal_joint: 0
-  left_thumb_tip_joint: 0
   left_wrist_pitch_joint: -1.571
   left_wrist_roll_joint: 0
   left_wrist_yaw_joint: 0
   right_elbow_joint: 0
   right_index_proximal_joint: 0
-  right_index_tip_joint: 0
   right_middle_proximal_joint: 0
-  right_middle_tip_joint: 0
   right_pinky_proximal_joint: 0
-  right_pinky_tip_joint: 0
   right_ring_proximal_joint: 0
-  right_ring_tip_joint: 0
   right_shoulder_pitch_joint: 0
   right_shoulder_roll_joint: 1.571
-  right_shoulder_yaw_joint:  1.571
+  right_shoulder_yaw_joint: 1.571
   right_thumb_metacarpal_joint: 0
   right_thumb_proximal_joint: 0
-  right_thumb_tip: 0
   right_wrist_pitch_joint: -1.571
   right_wrist_roll_joint: 0
   right_wrist_yaw_joint: 0
